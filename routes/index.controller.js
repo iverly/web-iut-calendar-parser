@@ -1,5 +1,5 @@
-function home(ctx) {
-    ctx.body = "Hello World";
+async function home(ctx) {
+    await ctx.render('index');
 }
 
 module.exports = { home };
