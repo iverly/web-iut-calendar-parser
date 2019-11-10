@@ -4,6 +4,7 @@ const cors = require('@koa/cors');
 const helmet = require('koa-helmet');
 const logger = require('koa-logger');
 const indexRouter = require('./routes/index.route');
+const publisherRouter = require('./routes/publisher.route');
 const render = require('koa-ejs');
 const path = require('path');
 
@@ -24,6 +25,8 @@ server
     .use(cors())
     .use(bodyParser())
     .use(indexRouter.routes())
-    .use(indexRouter.allowedMethods());
+    .use(indexRouter.allowedMethods())
+    .use(publisherRouter.routes())
+    .use(publisherRouter.allowedMethods());
 
 module.exports = server;
