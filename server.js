@@ -5,6 +5,7 @@ const helmet = require('koa-helmet');
 const logger = require('koa-logger');
 const indexRouter = require('./routes/index.route');
 const publisherRouter = require('./routes/publisher.route');
+const calendarRouter = require('./routes/calendar.route');
 const render = require('koa-ejs');
 const path = require('path');
 
@@ -27,6 +28,8 @@ server
     .use(indexRouter.routes())
     .use(indexRouter.allowedMethods())
     .use(publisherRouter.routes())
-    .use(publisherRouter.allowedMethods());
+    .use(publisherRouter.allowedMethods())
+    .use(calendarRouter.routes())
+    .use(calendarRouter.allowedMethods());
 
 module.exports = server;
