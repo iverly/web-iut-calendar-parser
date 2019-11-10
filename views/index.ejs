@@ -23,9 +23,157 @@
             text-align: center;
             border-bottom: 1px solid rgb(73, 73, 73);
         }
+        h2 {
+            padding: 24px 0;
+        }
+        div.content {
+            padding: 0 24px;
+        }
+        p.url, pre.row {
+            background-color: rgb(230, 230, 230);
+            padding: 12px 8px;
+            border-radius: 5px;
+        }
+        p.description {
+            padding: 0 18px;
+        }
+        footer {
+            border-top: 1px solid rgb(73, 73, 73);
+            padding: 24px 0;
+            margin-top: 28px;
+        }
+        footer > p {
+            text-align: center;
+            margin: 0;
+        }
+        span {
+            color: red;
+        }
+        span.method {
+            color: green;
+        }
+        span.opt {
+            color: grey;
+        }
     </style>
 </head>
 <body>
     <h1>Web API for iut-calendar-parser</h1>
+    <h2>Publisher / Calendar</h2>
+    <div class="content">
+        <div class="request">
+            <p class="url"><span class="method">GET</span> /(publisher|calendar)/<span>:url</span></p>
+            <p class="description">Retourne la data brute des serveurs de l'IUT A. L'URL doit être encodé en format URI. Type: Object</p>
+        </div>
+        <div class="request">
+            <p class="url"><span class="method">GET</span> /(publisher|calendar)/<span>:url</span>/<span>:date</span>/week</p>
+            <p class="description">Retourne les cours pour une semaine donnée. La date n'est pas obligatoirement le lundi de la semaine voulue. Type: Object. Format: Voir 'Response'</p>
+        </div>
+        <div class="request">
+            <p class="url"><span class="method">GET</span> /(publisher|calendar)/<span>:url</span>/<span>:date</span>/day</p>
+            <p class="description">Retourne les cours pour un jour donné. Type: Array. Format: Voir 'Response'</p>
+        </div>
+    </div>
+    <h2>Response</h2>
+    <div class="content">
+        <div class="request">
+            <p class="url"><span class="method">GET</span> /calendar/<span>GE_S1_g1</span>/<span>12-18-2019</span>/day <span class="opt">// Date must be mm-dd-yyyy</span></p>
+        </div>
+        <pre id="json" class="row">
+[
+    {
+        "category":"CM",
+        "startTime":"08:00",
+        "endTime":"10:00",
+        "module":"GE_S1_SE",
+        "group":"GEII",
+        "room":"IP52",
+        "staff":null
+    },
+    {
+        "category":"TD",
+        "startTime":"10:00",
+        "endTime":"12:00",
+        "module":"GE_S1_Math",
+        "group":"GEII",
+        "room":"GE20",
+        "staff":null
+    },
+    {
+        "category":"TP",
+        "startTime":"13:30",
+        "endTime":"15:30",
+        "module":"GE_S1_OL",
+        "group":"GEII",
+        "room":"GE35",
+        "staff":null
+    },
+    {
+        "category":"TP",
+        "startTime":"15:30",
+        "endTime":"17:30",
+        "module":"GE_S1_TL_GE",
+        "group":"GEII",
+        "room":"GE50",
+        "staff":null
+    }
+]</pre>
+<div class="request">
+        <p class="url"><span class="method">GET</span> /publisher/<span>https%3A%2F%2Fedt.iut-tlse3.fr%2Fplanning%2Finfo%2Fg8659.xml</span>/<span>12-18-2019</span>/day <span class="opt">// Date must be mm-dd-yyyy</span></p>
+    </div>
+    <pre id="json" class="row">
+[
+    {
+        "category":"cours de soutien",
+        "startTime":"09:30",
+        "endTime":"11:00",
+        "module":"InM1203",
+        "group":"InS1",
+        "room":"IN022",
+        "staff":"KROSS Caroline"
+    },
+    {
+        "category":"TD",
+        "startTime":"14:00",
+        "endTime":"15:30",
+        "module":"InM1205",
+        "group":"InS1E",
+        "room":"IN210",
+        "staff":"TINE Chantal"
+    },
+    {
+        "category":"TP",
+        "startTime":"15:30",
+        "endTime":"17:00",
+        "module":"InM1103",
+        "group":[
+            "InS1E1",
+            "InS1E2"
+        ],
+        "room":[
+            "InGrenat",
+            "InJade"
+        ],
+        "staff":"TARBOURIECH Cedric"
+    },
+    {
+        "category":"cours de soutien",
+        "startTime":"17:00",
+        "endTime":"18:30",
+        "module":null,
+        "group":"InS1",
+        "room":"IN022",
+        "staff":"PAUL Emmanuel"
+    }
+]</pre>
+    </div>
+    <h2>Tips</h2>
+    <div class="content">
+        <p>Pour savoir lequel choisir entre publisher et calendar, il suffit de regarder en bas de la page de l'emploi du temps. Vous devriez avoir soit "CELCAT Calendar" dans ce cas choisissez calendar ou alors "CELCAT Web Publisher" dans ce cas choisissez publisher.</p>
+    </div>
+    <footer>
+        <p>Made by Iverly in 🇫🇷 with &#10084;&#65039;</p>
+        <p>IUT INFO CHAMPION</p>
+    </footer>
 </body>
 </html>
